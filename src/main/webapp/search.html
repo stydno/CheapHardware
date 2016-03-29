@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#searchAdsButton").click(function () {
+                    $.post('AppServlet', {parameter: $('#parameter').val(), search: 1}, function (responseText) {
+                    });
+                    $("#showAdsBlock").load("search.jsp", function (responseTxt, statusTxt, xhr) {
+                    });
+                    if ($("#showAdsBlock").is(":hidden")) {
+                        $("#showAdsBlock").show("fast");
+                    } else {
+                        $("#showAdsBlock").hide("fast");
+                    }
+                });
+            });
+
+        </script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+    <center>
+        <b>Write model or phone</b><br>
+        <input type="text" size="15" id="parameter" value=""/><br>
+        <input type="button" id="searchAdsButton"  value="apply" />
+        <br>
+        <div id="showAdsBlock"></div>
+    </center>
+</html>

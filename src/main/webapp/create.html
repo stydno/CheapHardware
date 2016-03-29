@@ -1,0 +1,29 @@
+
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#create").click(function () {
+                    $.post('AppServlet', {name: $('#name').val(), phone: $('#phone').val(), model: $('#model').val(),
+                        price: $('#price').val(), create: 1}, function (responseText) {
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        <b>Fill in</b><br><b>Name </b><input type="text"
+                                             size="15" id="name" value=""/><br>
+        <b>Phone </b><input type="text"
+                            size="15" id="phone" value=""/><br>
+        <b>Model </b><input type="text"
+                            size="15" id="model" value=""/><br>
+        <b>Price </b><input type="text"
+                            size="9" id="price" value=""/><br>
+        <input type="button" id="create"  value="apply" />
+
+    </body>
+
+</html>

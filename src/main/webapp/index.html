@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#createButton").click(function () {
+                    $("#searchBlock").hide();
+                    $("#showBlock").hide();
+                    $("#createBlock").show("fast");
+                    return false;
+                });
+            });
+            $(document).ready(function () {
+                $("#showButton").click(function () {
+                    $("#searchBlock").hide();
+                    $("#createBlock").hide();
+                    $("#showBlock").show("fast");
+                    return false;
+                });
+            });
+            $(document).ready(function () {
+                $("#searchButton").click(function () {
+                    $("#createBlock").hide();
+                    $("#showBlock").hide();
+                    $("#searchBlock").show("fast");
+                    return false;
+                });
+            });
+
+
+            $(document).ready(function () {
+                $.post('AppServlet', {showAll: "1"}, function (responseText) {
+                });
+                $("#createBlock").hide();
+                $("#showBlock").hide();
+                $("#searchBlock").hide();
+                $("#createBlock").load("create.html", function (responseTxt, statusTxt, xhr) {
+                });
+                $("#showBlock").load("show.jsp", function (responseTxt, statusTxt, xhr) {
+                });
+                $("#searchBlock").load("search.html", function (responseTxt, statusTxt, xhr) {
+                });
+            });
+
+        </script>
+        <link rel="stylesheet" type="text/css" href="main.css" />
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+    <center><b>
+            <input type="button" id="createButton"  value="Create new" style="width:10%;height:70Px"/>
+            <input type="button" id="searchButton"  value="Search specific" style="width:10%;height:70Px"/>
+            <input type="button" id="showButton"  value="Show all" style="width:10%;height:70Px"/>
+            <br>
+        </b>
+        <div id="createBlock"></div>
+        <div id="showBlock"></div>
+        <div id="searchBlock"></div>
+    </center>
+</html>
