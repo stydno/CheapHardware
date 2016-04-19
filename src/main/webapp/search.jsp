@@ -11,11 +11,11 @@
                 String adsId = a.getId().toString();
                 info += "<br><b> ID </b>" + a.getId() + " <b>Model</b> " + a.getItem().getModel() + " <b>Price</b> " + a.getPrice()
                         + "<br> <b>Date</b>" + a.getDate() + " <b>Seller's name </b>" + a.getSeller().getName()
-                        + "<br><b> Telephone " + a.getSeller().getPhone();
+                        + "<br><b> Telephone </b>" + a.getSeller().getPhone();
 
-                info += "<input type=\"button\" id=\"delete" + adsId + "\"  value=\"del this\" style=\"width:30Px;height:20Px\"/>";
-                info += "<input type=\"text\" size=\"10\" id=\"newPrice" + adsId + "\" value=\"\"/>";
-                info += "<input type=\"button\" id=\"changePrice" + adsId + "\"  value=\"change\" style=\"width:30Px;height:20Px\"/>";
+                info += "<br><input type=\"text\" size=\"7\" id=\"newPrice" + adsId + "\" value=\"\"/>";
+                info += "<input type=\"button\" id=\"changePrice" + adsId + "\"  value=\"change price\" style=\"width:90Px;height:23Px\"/><br>";
+                info += "<input type=\"button\" id=\"delete" + adsId + "\"  value=\"delete ads\" style=\"width:90Px;height:23Px\"/>";
     %>
     <script>$(document).ready(function () {
             $("#delete<%=adsId%>").click(function () {

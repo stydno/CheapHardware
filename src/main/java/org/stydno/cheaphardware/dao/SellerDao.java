@@ -1,6 +1,7 @@
 package org.stydno.cheaphardware.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -9,11 +10,10 @@ import org.stydno.cheaphardware.tables.Seller;
 @Repository
 public class SellerDao {
 
-    Seller seller;
+    List<Seller> sellerList;
 
     public Seller createSeller(String sellerName, String sellerPhone) throws SQLException {
-        seller = new Seller(sellerName, sellerPhone);
-        return seller;
+        return new Seller(sellerName, sellerPhone);
     }
 
     public Seller getSeller(Criteria cr, Integer sellerId) throws SQLException {
@@ -21,13 +21,13 @@ public class SellerDao {
         return (Seller) cr.list().get(0);
     }
 
-    Integer getId(Criteria cr, String sellerPhone) {
+    public Integer getId(Criteria cr, String sellerPhone) {
         cr.add(Restrictions.ilike("sellerPhone", sellerPhone));
-        if (cr.list().isEmpty() == true) {
+        sellerList = (List<Seller>) cr.list();
+        if (sellerList.isEmpty() == true) {
             return 0;
         } else {
-            seller = (Seller) cr.list().get(0);
-            return seller.getId();
+            return sellerList.get(0).getId();
         }
     }
 

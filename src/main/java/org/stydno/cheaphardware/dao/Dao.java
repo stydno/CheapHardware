@@ -107,8 +107,6 @@ public class Dao {
     public void deleteAds(Integer AdsId) {
         session.getTransaction().begin();
         Criteria cr = session.createCriteria(Advertisement.class);
-        Advertisement ad = (Advertisement) advertisementDao.deleteAds(cr, AdsId);
-        
         session.delete(advertisementDao.deleteAds(cr, AdsId));
         session.getTransaction().commit();
     }
